@@ -1,3 +1,8 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
 /*Message style*/
 .message.info {
     height: 40px;
@@ -70,3 +75,89 @@
     }
 
 }
+
+/* --------------------------- Header Start --------------------------- */
+.header {
+    background-color: rgb(65, 65, 171);
+    height: 120px;
+    position: fixed;
+    width: calc(100vw - 240px);
+    top: 0;
+    right: 0;
+    padding: 10px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+/* --------------------------- Header End --------------------------- */
+
+/* --------------------------- Sider Start --------------------------- */
+.sider {
+    background-color: rgb(22, 22, 52);
+    width: 240px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.account {
+    height: 120px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.account-avatar {
+    height: 110px;
+    width: 110px;
+    border-radius: 50%;
+    border: solid 1px cyan;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.sider a {
+    color: white;
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.nav-list .nav-item {
+    height: 50px;
+    min-width: 160px;
+    border-radius: 30px;
+}
+
+.nav-list .nav-item:hover {
+    background-color: rgb(32, 68, 100);
+}
+
+.logout {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/* --------------------------- Sider End --------------------------- */

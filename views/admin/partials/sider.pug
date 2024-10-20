@@ -1,0 +1,16 @@
+.sider 
+    .account
+        .account-avatar(style=`background-image: url(/static${user.avatar});`)
+    .nav 
+        ul.nav-list 
+            li.nav-item
+                a(href="/admin/product") Product
+            li.nav-item
+                a(href="/admin/category") Category
+            li.nav-item
+                a(href="/admin/role") Role
+            li.nav-item
+                a(href="/admin/account") Account
+    .logout 
+        a.btn.btn-warning(href="/admin/auth/logout")
+            | Logout 
