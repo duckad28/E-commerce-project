@@ -1,0 +1,11 @@
+mixin message-success(messages)
+    - if (messages.success)
+        .message.info.show.success(duration = 5000)
+            span.content= messages.success
+            span.close X
+
+mixin message-error(messages)
+    - if (messages.error)
+        .message.info.show.error(duration = 5000)
+            span= messages.error
+            span.close X

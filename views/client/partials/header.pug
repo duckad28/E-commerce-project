@@ -1,0 +1,18 @@
+header.header 
+    .container 
+        .row
+            .col-4.logo-container.d-flex.align-items-center
+                img(src='/static/client/assets/images/logo.png' class='logo')
+                .logo-text 
+                    p Book 
+                    p Store
+
+            .col-4
+            .col-4
+                ul.nav 
+                    li
+                        a(href="/" class=(title == 'Home') ? "active" : "") HomePage
+                        .line 
+                    li
+                        a(href="/product" class=(title == 'Product') ? "active" : "") Library
+                        .line

@@ -1,0 +1,175 @@
+:root {
+    --blue: #1e90ff;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--white);
+    font-family: 'Bacasime Antique';
+    font-size: 22px;
+    width: 100vw;
+    overflow-x: hidden;
+    color: black;
+    
+}
+
+/*--------------------------------Header start------------------------------*/
+.header {
+    height: 160px;
+    width: 100%;
+    box-shadow: 0 1px 4px 1px rgb(139, 119, 119);
+}
+
+.header .logo-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.header .logo-container .logo {
+    height: 160px;
+    background-color: transparent;
+}
+
+.header .logo-container .logo-text {
+    position: relative;
+    height: 72px;
+    width: 20px;
+}
+
+.header .logo-container p {
+    font-size: 36px;
+    font-weight: 800;
+    position: absolute;
+    line-height: 36px;
+    margin: 0;
+}
+
+.logo-text p:first-child {
+    top: 0px;
+}
+
+.logo-text p:last-child {
+    bottom: 0px;
+    left: 20px;
+}
+
+.header ul {
+    list-style: none;
+}
+
+.header a {
+    text-decoration: none;
+    color: black;
+}
+
+.header .nav {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .nav li {
+    height: 30px;
+    transition: all .2s linear;
+    position: relative;
+    cursor: pointer;
+}
+
+.header .nav li .line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0px;
+    height: 1px;
+    transform: translateX(-50%);
+    background-color: rgb(48, 45, 41);
+    transform-origin: 50% 50%;
+    transition: all .2s linear;
+}
+
+.nav li a.active {
+    color: var(--blue);
+}
+/*--------------------------------Header end------------------------------*/
+
+/*--------------------------------Footer Start------------------------------*/
+.footer {
+    height: 120px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(201, 167, 167);
+}
+
+.footer h1 {
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--white);
+}
+/*--------------------------------Footer end------------------------------*/
+
+
+/*--------------------------------------Product CSS--------------------------------------*/
+.content {
+    margin-top: 40px;
+}
+
+.card {
+    height: 320px;
+    position: relative;
+    margin-bottom: 40px;
+    border: solid 1px gray;
+}
+
+.card-img-top {
+    height: 100%;
+    transform-origin: left;
+    transition: all 1s linear;
+    z-index: 100;
+}
+
+.card::after {
+    content: '';
+    height: 10px;
+    width: 100%;
+    background-color: antiquewhite;
+    position: absolute;
+    top: -10px;
+    left: 5px;
+    transform: skewX(-45deg);
+    border-right: solid 1px gray;
+    border-top: solid 1px gray;
+    border-left: solid 1px gray;
+}
+
+.card::before {
+    content: '';
+    height: 100%;
+    width: 10px;
+    background-color: antiquewhite;
+    position: absolute;
+    right: -10px;
+    top: -5px;
+    transform: skewY(-45deg);
+    border-right: solid 1px gray;
+    border-bottom: solid 1px gray;
+}
+
+.card-body {
+    background-color: var(--blue);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}

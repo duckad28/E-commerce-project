@@ -1,0 +1,24 @@
+include ../../../mixins/message.pug
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= title
+        link(rel="stylesheet", href="/static/admin/css/style.css")
+    body 
+        +message-success(messages)
+        +message-error(messages)
+        form(
+            method="POST"
+            action='/admin/auth/login'
+            form-login-post
+        )
+            .mb-3
+                label.form-label(for='email') Email address
+                input#email.form-control(type='email' aria-describedby='emailHelp' name='email')
+            .mb-3
+                label.form-label(for='password') Password
+                input#password.form-control(type='password' name='password')
+            button.btn.btn-primary(type='submit') Submit
+        script(src="/static/admin/js/script.js") 
