@@ -1,15 +1,21 @@
-.sider 
+.sider
     .account
         .account-avatar(style=`background-image: url(/static${user.avatar});`)
+    .account-subnav
+        .info 
+            h3 #{user.full_name}
+        button.btn.btn-outline-dark X
     .nav 
         ul.nav-list 
-            li.nav-item
+            li.nav-item( class=title=='Dashboard' ? 'active' : '')
+                a(href="/admin/dashboard") Dashboard
+            li.nav-item( class=title=='Product' ? 'active' : '')
                 a(href="/admin/product") Product
-            li.nav-item
+            li.nav-item( class=title=='Category' ? 'active' : '')
                 a(href="/admin/category") Category
-            li.nav-item
+            li.nav-item( class=title=='Role' ? 'active' : '')
                 a(href="/admin/role") Role
-            li.nav-item
+            li.nav-item( class=title=='Account' ? 'active' : '')
                 a(href="/admin/account") Account
     .logout 
         a.btn.btn-warning(href="/admin/auth/logout")

@@ -1,0 +1,35 @@
+extends ../../layouts/default.pug
+
+block main
+    .card-body.products  
+        .row 
+            h3 Product list
+        .row
+            table  
+                thead 
+                    tr 
+                        th STT
+                        th Image 
+                        each item in scheme 
+                            th #{item}
+                tbody
+                    each item, index in product 
+                        tr.product-record
+                            td #{(pagination.currentPage - 1)*pagination.limit + index + 1}
+                            td
+                                img(class='item-img' src=`/static/${item.imageLink}`)
+                            each prop in scheme 
+                                th
+                                    p #{item[prop]}
+    .pagination-container 
+        ul.pagination
+            li.page-item
+                    button(data-page-index=parseInt(pagination.currentPage)-1 class=pagination.currentPage ==1 ? 'd-none' : '')
+                        i.fa-solid.fa-caret-left
+            - for (var i = 1; i <= pagination.totalPages; ++i) {
+                li.page-item
+                    button(data-page-index=i class=pagination.currentPage==i ? 'active' : '') #{i} 
+            - }
+            li.page-item
+                    button(data-page-index=parseInt(pagination.currentPage)+1 class=pagination.currentPage == pagination.totalPages ? 'd-none' : '')
+                        i.fa-solid.fa-caret-right
