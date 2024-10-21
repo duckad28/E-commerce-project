@@ -237,6 +237,7 @@ body {
 }
 
 .product-record {
+    height: 120px;
     border-bottom: solid 1px gray;
 }
 

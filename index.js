@@ -6,6 +6,7 @@ const path = require('path');
 var cookieParser = require('cookie-parser');
 var session      = require('express-session');
 var flash        = require('express-flash');
+var methodOverride = require('method-override');
 
 // user define
 const database = require('./config/database');
@@ -27,7 +28,7 @@ app.use('/static', express.static(staticPath));
 app.use(cookieParser('keyboard cat'));
 app.use(session({ cookie: { maxAge: 60000 }}));
 app.use(flash());
-
+app.use(methodOverride('_method'));
 
 // Run app
 clientRoute(app);

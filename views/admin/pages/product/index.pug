@@ -12,6 +12,7 @@ block main
                         th Image 
                         each item in scheme 
                             th #{item}
+                        th Update
                 tbody
                     each item, index in product 
                         tr.product-record
@@ -19,8 +20,13 @@ block main
                             td
                                 img(class='item-img' src=`/static/${item.imageLink}`)
                             each prop in scheme 
-                                th
+                                td
                                     p #{item[prop]}
+                            td
+                                .row 
+                                    button.btn.btn-primary(data-id=item._id button-edit) Edit 
+                                .row 
+                                    button.btn.btn-danger(data-id=item._id button-delete) Delete
     .pagination-container 
         ul.pagination
             li.page-item
@@ -33,3 +39,9 @@ block main
             li.page-item
                     button(data-page-index=parseInt(pagination.currentPage)+1 class=pagination.currentPage == pagination.totalPages ? 'd-none' : '')
                         i.fa-solid.fa-caret-right
+    form(
+        action = ''
+        method="POST"
+        form-delete-item 
+        data-path='/admin/product/delete/'
+    )

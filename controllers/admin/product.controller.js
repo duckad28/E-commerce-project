@@ -23,3 +23,7 @@ module.exports.index = async (req, res) => {
     const books = await Book.find(find).skip(paginationObject.skip).limit(paginationObject.limit);
     res.render('admin/pages/product', {title: 'Product', product: books, scheme: scheme, pagination: paginationObject});
 }
+
+module.exports.delete = async (req, res) => {
+    res.send(req.params.id);
+}

@@ -40,3 +40,19 @@ if (pageItems) {
         }
     })
 }
+
+const form = document.querySelector('[form-delete-item]');
+const deleteItems = document.querySelectorAll('[button-delete]');
+if (deleteItems) {
+    const dataPath = form.getAttribute('data-path');
+    deleteItems.forEach(item => {
+        item.onclick = (e) => {
+            let id = item.getAttribute('data-id');
+            const answer = confirm('Do you want to delete this item?');
+            if (answer) {
+                form.action = dataPath + id + '?_method=DELETE';
+                form.submit();
+            }
+        }
+    })
+}
