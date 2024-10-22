@@ -1,0 +1,63 @@
+mixin pagination(pagination)
+    .pagination-container(class = pagination.totalPages > 1 ? "" : 'd-none') 
+        ul.pagination
+            li.page-item
+                button(data-page-index=parseInt(pagination.currentPage)-1 class=pagination.currentPage ==1 ? 'd-none' : '')
+                    i.fa-solid.fa-caret-left
+            - for (var i = 1; i <= pagination.totalPages; ++i) {
+                li.page-item
+                    button(data-page-index=i class=pagination.currentPage==i ? 'active' : '') #{i} 
+            - }
+            li.page-item
+                button(data-page-index=parseInt(pagination.currentPage)+1 class=pagination.currentPage == pagination.totalPages ? 'd-none' : '')
+                    i.fa-solid.fa-caret-right
+
+mixin pagination-l(pagination)
+    .pagination-container
+        ul.pagination
+            li.page-item
+                button(data-page-index=parseInt(pagination.currentPage)-1 class=pagination.currentPage ==1 ? 'd-none' : '')
+                    i.fa-solid.fa-caret-left
+                    
+            li.page-item
+                button(data-page-index=1 class=pagination.currentPage==1 ? 'active' : '') 1
+            if pagination.currentPage > 8
+                li.page-item.page-item-enter-index
+                    button(button-enter-index) ...
+                    .input-box.d-none
+                        input(type = 'number' value=pagination.currentPage min=1 max=pagination.totalPages)
+                        span /
+                        span #{pagination.totalPages}
+            else 
+                li.page-item 
+                    button(data-page-index=2 class=pagination.currentPage==2 ? 'active' : '') 2
+            if pagination.currentPage <= 8
+                - for (var i = 3; i <= 8; ++i) {
+                    li.page-item
+                        button(data-page-index=i class=pagination.currentPage==i ? 'active' : '') #{i} 
+                - }
+            else if pagination.currentPage >= pagination.totalPages - 7
+                - for (var i = pagination.totalPages - 7; i <= pagination.totalPages - 2; ++i) {
+                    li.page-item
+                        button(data-page-index=i class=pagination.currentPage==i ? 'active' : '') #{i} 
+                - }
+            else
+                - for (var i = pagination.currentPage - 5; i <= pagination.currentPage; ++i) {
+                    li.page-item
+                        button(data-page-index=i class=pagination.currentPage==i ? 'active' : '') #{i} 
+                - }
+            if pagination.currentPage < pagination.totalPages - 7
+                li.page-item.page-item-enter-index
+                    button(button-enter-index) ...
+                    .input-box.d-none
+                        input(type = 'number' value=pagination.currentPage min=1 max=pagination.totalPages)
+                        span /
+                        span #{pagination.totalPages}
+            else 
+                li.page-item 
+                    button(data-page-index=pagination.totalPages-1 class=pagination.currentPage==pagination.totalPages-1 ? 'active' : '') #{pagination.totalPages - 1}
+            li.page-item
+                button(data-page-index=pagination.totalPages class=pagination.currentPage==pagination.totalPages ? 'active' : '') #{pagination.totalPages}
+            li.page-item
+                button(data-page-index=parseInt(pagination.currentPage)+1 class=pagination.currentPage == pagination.totalPages ? 'd-none' : '')
+                    i.fa-solid.fa-caret-right

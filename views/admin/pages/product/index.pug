@@ -1,5 +1,5 @@
 extends ../../layouts/default.pug
-
+include ../../mixins/pagination.pug
 block main
     .card-body.products  
         .row 
@@ -27,18 +27,10 @@ block main
                                     button.btn.btn-primary(data-id=item._id button-edit) Edit 
                                 .row 
                                     button.btn.btn-danger(data-id=item._id button-delete) Delete
-    .pagination-container(class = pagination.totalPages > 1 ? "" : 'd-none') 
-        ul.pagination
-            li.page-item
-                    button(data-page-index=parseInt(pagination.currentPage)-1 class=pagination.currentPage ==1 ? 'd-none' : '')
-                        i.fa-solid.fa-caret-left
-            - for (var i = 1; i <= pagination.totalPages; ++i) {
-                li.page-item
-                    button(data-page-index=i class=pagination.currentPage==i ? 'active' : '') #{i} 
-            - }
-            li.page-item
-                    button(data-page-index=parseInt(pagination.currentPage)+1 class=pagination.currentPage == pagination.totalPages ? 'd-none' : '')
-                        i.fa-solid.fa-caret-right
+    if pagination.totalPages > 10
+        +pagination-l(pagination)
+    else
+        +pagination(pagination)
     form(
         action = ''
         method="POST"

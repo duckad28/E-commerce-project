@@ -3,7 +3,7 @@ const Book = require('../../models/Book.model');
 module.exports.index = async (req, res) => {
     let find = {};
     let paginationObject = {
-        limit: 10,
+        limit: 2,
         currentPage: 1
     }
     if (req.query.index) {

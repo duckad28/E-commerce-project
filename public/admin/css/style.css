@@ -8,6 +8,10 @@ body {
     background-color: rgb(240, 240, 240);
 }
 
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
 .main-content {
     position: fixed;
     top: 120px;
@@ -227,20 +231,7 @@ body {
 }
 /* --------------------------- Sider End --------------------------- */
 
-
-/* ------------------------------------ Product Start ------------------------------------ */
-.item-img {
-    max-height: 90px;
-}
-
-.products {
-}
-
-.product-record {
-    height: 120px;
-    border-bottom: solid 1px gray;
-}
-
+/* --------------------------- Pagination Start --------------------------- */
 .pagination-container {
     width: 100%;
     display: flex;
@@ -268,3 +259,46 @@ body {
 .pagination .page-item button.active {
     box-shadow: 0 0 4px 1px rgb(139, 139, 225);
 }
+
+.page-item {
+    position: relative;
+}
+
+.page-item-enter-index .input-box {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    border: solid 1px gray;
+    padding: 10px 4px;
+    border-radius: 10px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.page-item-enter-index .input-box input {
+    outline: none;
+    border: none;
+    width: 20px;
+    flex: 1;
+}
+
+.page-item-enter-index .input-box span {
+    flex: 1;
+}
+/* --------------------------- Pagination End --------------------------- */
+
+/* ------------------------------------ Product Start ------------------------------------ */
+.item-img {
+    max-height: 90px;
+}
+
+.products {
+}
+
+.product-record {
+    height: 120px;
+    border-bottom: solid 1px gray;
+}
+

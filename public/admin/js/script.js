@@ -70,3 +70,39 @@ if(buttonSearch) {
         }
     }
 }
+
+const buttonChooseIndexs = document.querySelectorAll('.page-item.page-item-enter-index');
+if (buttonChooseIndexs) {
+    buttonChooseIndexs.forEach(item => {
+        let ele = item.querySelector('.input-box');
+        let input = ele.querySelector('input');
+        item.onclick = (e) => {
+            
+            if (ele.classList.contains('d-none')) {
+                ele.classList.remove('d-none')
+                
+                input.focus();
+                document.onkeydown = (ev) => {
+                    if (ev.key == 'Enter') {
+                        if (input == ev.target) {
+                            let pageIndex = input.value;
+                            if (pageIndex) {
+                                let url = new URL(window.location.href);
+                                let currentIndex = url.searchParams.get('index');
+                                if (pageIndex == currentIndex) {
+                    
+                                } else {
+                                    url.searchParams.set('index', pageIndex);
+                                    window.location.href = url.href;
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                ele.classList.add('d-none')
+            }
+            
+        }
+    })
+}
