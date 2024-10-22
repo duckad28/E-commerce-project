@@ -56,3 +56,17 @@ if (deleteItems) {
         }
     })
 }
+
+const inputSearch = document.querySelector('input.input-search')
+const buttonSearch = document.querySelector('button.btn-search');
+if(buttonSearch) {
+    buttonSearch.onclick = (e) => {
+        let search = (inputSearch.value);
+        if (search) {
+            let url = new URL(window.location.href);
+            url.searchParams.set('search', search);
+            url.searchParams.delete('index')
+            window.location.href = url.href;
+        }
+    }
+}

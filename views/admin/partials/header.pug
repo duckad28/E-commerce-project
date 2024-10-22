@@ -1,7 +1,6 @@
 header.header
     p Welcome back, #{user.full_name}
-    form(id='form-search')
-        .input-group.rounded
-            input.form-control.rounded(type='search' placeholder='Search' aria-label='Search' aria-describedby='search-addon')
-            span#search-addon.input-group-text.border-0
-                i.fa-solid.fa-magnifying-glass
+    .input-group.rounded
+        input.input-search.form-control.rounded(type='search' placeholder='Search' aria-label='Search' aria-describedby='search-addon' value=search)
+        button.btn-search#search-addon.input-group-text.border-0
+            i.fa-solid.fa-magnifying-glass

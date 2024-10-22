@@ -112,7 +112,7 @@ body {
     border-radius: 10px;
 }
 
-.header form {
+.header .input-group {
     position: absolute;
     top: 50%;
     right: 10px;

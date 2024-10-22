@@ -27,7 +27,7 @@ block main
                                     button.btn.btn-primary(data-id=item._id button-edit) Edit 
                                 .row 
                                     button.btn.btn-danger(data-id=item._id button-delete) Delete
-    .pagination-container 
+    .pagination-container(class = pagination.totalPages > 1 ? "" : 'd-none') 
         ul.pagination
             li.page-item
                     button(data-page-index=parseInt(pagination.currentPage)-1 class=pagination.currentPage ==1 ? 'd-none' : '')
