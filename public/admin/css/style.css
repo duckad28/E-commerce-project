@@ -302,3 +302,23 @@ input[type=number]::-webkit-inner-spin-button {
     border-bottom: solid 1px gray;
 }
 
+th {
+    text-transform: capitalize;
+    border: 1px solid rgb(202, 188, 188);
+    text-align: center;
+}
+
+td {
+    text-transform: capitalize;
+    border: 1px solid rgb(202, 188, 188);
+    text-align: center;
+    padding: 10px;
+}
+
+.btn-action {
+    width: 80%;
+}
+
+.blank {
+    height: 10px;
+}

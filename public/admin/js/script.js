@@ -106,3 +106,16 @@ if (buttonChooseIndexs) {
         }
     })
 }
+
+const formSort = document.querySelector('[form-select-sort]');
+if (formSort) {
+    formSort.onchange = (e) => {
+        let url = new URL(window.location.href);
+        let [key, val] = e.target.value.split('-');
+        if (key && val) {
+            url.searchParams.set('skey', key);
+            url.searchParams.set('svalue', val);
+            window.location.href = url.href
+        }
+    }
+}

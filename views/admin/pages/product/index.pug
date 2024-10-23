@@ -4,6 +4,12 @@ block main
     .card-body.products  
         .row 
             h3 Product list
+        .row 
+            .col-4 
+                select.form-select(aria-label='Default select example' form-select-sort)
+                    option --- Select sort type ---
+                    each item in sort.arr 
+                        option(value=item[0] selected=item[0]==sort.select) #{item[1]}
         .row
             table  
                 thead 
@@ -23,10 +29,11 @@ block main
                                 td
                                     p #{item[prop]}
                             td
-                                .row 
-                                    button.btn.btn-primary(data-id=item._id button-edit) Edit 
-                                .row 
-                                    button.btn.btn-danger(data-id=item._id button-delete) Delete
+                                .row.d-flex.justify-content-center.align-items-center
+                                    button.btn-action.btn.btn-primary(data-id=item._id button-edit) Edit
+                                .row.blank
+                                .row.d-flex.justify-content-center.align-items-center
+                                    button.btn-action.btn.btn-danger(data-id=item._id button-delete) Delete
     if pagination.totalPages > 10
         +pagination-l(pagination)
     else
