@@ -1,16 +1,9 @@
 const express = require('express');
-var multer = require('multer');
-  
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, './public/admin/assets/images')
-    },
-    filename: function (req, file, cb) {
-      cb(null, file.fieldname + '-' + Date.now() + '.jpg')
-    }
-  })
-   
-  var upload = multer({ storage: storage })
+// const fileUpload = require('../../config/cloudinary.config');
+const cloudMiddleware = require('../../middlewares/cloudinary.middeware');
+const multer = require('multer');
+
+const upload = multer();
 
 const router = express.Router();
 const accountController = require('../../controllers/admin/account.controller');
@@ -19,6 +12,8 @@ router.get('/', accountController.index);
 
 router.get('/create', accountController.create);
 
-router.post('/create',upload.single('avatar'), accountController.createPost);
+router.post('/create',upload.single('avatar'), cloudMiddleware.cloudUpload, accountController.createPost);
+
+router.delete('/delete/:id', accountController.delete);
 
 module.exports = router;

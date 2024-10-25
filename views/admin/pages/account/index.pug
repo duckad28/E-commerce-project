@@ -24,7 +24,7 @@ block main
                         tr.product-record
                             td #{index + 1}
                             td
-                                img(class='item-img' src=`/static${item.avatar}`)
+                                img(class='item-img' src=item.avatar)
                             each prop in scheme 
                                 td
                                     p #{item[prop]}
@@ -34,3 +34,9 @@ block main
                                 .row.blank
                                 .row.d-flex.justify-content-center.align-items-center
                                     button.btn-action.btn.btn-danger(data-id=item._id button-delete) Delete
+    form(
+        action = ''
+        method="POST"
+        form-delete-item 
+        data-path='/admin/account/delete/'
+    )
