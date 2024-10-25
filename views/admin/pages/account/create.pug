@@ -1,0 +1,29 @@
+extends ../../layouts/default.pug
+block main 
+    .card-body 
+        .row 
+            h2 Create new account 
+        .row 
+            form(
+                action="/admin/account/create"
+                method="POST"
+                form-create-account
+                enctype="multipart/form-data"
+            )
+                each item in scheme 
+                    .form-group 
+                        label(for=item[0]) #{item[0]}
+                        input.form-control(type='text' name=item[0] id=item[0])
+                .row 
+                    .col-2
+                        input(type='file' accept='image/*' name='avatar')
+                .row
+                    .col-4 
+                        img.image-upload-preview(src='')
+                button.btn.btn-danger(type='submit') Create new account
+    form(
+        action = ''
+        method="POST"
+        form-delete-item 
+        data-path='/admin/account/delete/'
+    )

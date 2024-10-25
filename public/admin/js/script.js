@@ -119,3 +119,15 @@ if (formSort) {
         }
     }
 }
+
+const formCreateAccount = document.querySelector('[form-create-account]');
+if (formCreateAccount) {
+    console.log(formCreateAccount);
+    let inputImg = formCreateAccount.querySelector('input[type="file"]');
+    let imgPreview = formCreateAccount.querySelector('.image-upload-preview');
+    console.log(inputImg)
+    inputImg.onchange = (e) => {
+        let url = URL.createObjectURL(e.target.files[0]);
+        imgPreview.src = url
+    }
+}
