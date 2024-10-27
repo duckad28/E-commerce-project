@@ -1,4 +1,5 @@
 const Account = require('../../models/Account.model');
+const Role = require('../../models/Role.model');
 const deleteImage = require('../../config/cloudinary.config');
 
 module.exports.index = async (req, res) => {
@@ -7,16 +8,17 @@ module.exports.index = async (req, res) => {
         "email",
     ]
     const accounts = await Account.find({});
-    res.render('admin/pages/account', { title: 'Account', product: accounts, scheme });
+    res.render('admin/pages/account', { title: 'account', product: accounts, scheme });
 }
 
-module.exports.create = (req, res) => {
+module.exports.create = async (req, res) => {
     const scheme = [
         ["full_name", "String"],
         ["email", "String"],
         ["password", "String"],
     ]
-    res.render('admin/pages/account/create', { title: 'Account', scheme: scheme });
+    const roles = await Role.find({});
+    res.render('admin/pages/account/create', { title: 'account', scheme: scheme, roles: roles });
 }
 
 module.exports.createPost = async (req, res) => {

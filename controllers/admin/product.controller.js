@@ -54,7 +54,7 @@ module.exports.index = async (req, res) => {
     res.render(
         'admin/pages/product',
         {
-            title: 'Product',
+            title: 'product',
             product: books,
             scheme: scheme,
             pagination: paginationObject,

@@ -14,6 +14,11 @@ block main
                     .form-group 
                         label(for=item[0]) #{item[0]}
                         input.form-control(type='text' name=item[0] id=item[0])
+                .form-group
+                    select(name='role')
+                        option ---- Select role ----
+                        each item in roles 
+                            option(value=item._id) #{item.title}
                 .row 
                     .col-2
                         input(type='file' accept='image/*' name='avatar')

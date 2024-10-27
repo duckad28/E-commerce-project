@@ -9,14 +9,18 @@
         ul.nav-list 
             li.nav-item( class=title=='Dashboard' ? 'active' : '')
                 a(href="/admin/dashboard") Dashboard
-            li.nav-item( class=title=='Product' ? 'active' : '')
-                a(href="/admin/product") Product
-            li.nav-item( class=title=='Category' ? 'active' : '')
-                a(href="/admin/category") Category
-            li.nav-item( class=title=='Role' ? 'active' : '')
-                a(href="/admin/role") Role
-            li.nav-item( class=title=='Account' ? 'active' : '')
-                a(href="/admin/account") Account
+            each item in nav
+                if (role.permission.includes(item))
+                    li.nav-item( class=title==item ? 'active' : '')
+                        a(href=`/admin/${item}`) #{item}
+            //- li.nav-item( class=title=='Product' ? 'active' : '')
+            //-     a(href="/admin/product") Product
+            //- li.nav-item( class=title=='Category' ? 'active' : '')
+            //-     a(href="/admin/category") Category
+            //- li.nav-item( class=title=='Role' ? 'active' : '')
+            //-     a(href="/admin/role") Role
+            //- li.nav-item( class=title=='Account' ? 'active' : '')
+            //-     a(href="/admin/account") Account
     .logout 
         a.btn.btn-warning(href="/admin/auth/logout")
             | Logout 
