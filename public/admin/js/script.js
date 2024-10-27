@@ -43,7 +43,7 @@ if (pageItems) {
 
 const form = document.querySelector('[form-delete-item]');
 const deleteItems = document.querySelectorAll('[button-delete]');
-if (deleteItems) {
+if (deleteItems && form) {
     const dataPath = form.getAttribute('data-path');
     deleteItems.forEach(item => {
         item.onclick = (e) => {
@@ -130,4 +130,21 @@ if (formCreateAccount) {
         let url = URL.createObjectURL(e.target.files[0]);
         imgPreview.src = url
     }
+}
+
+const inputPermissions = document.querySelectorAll('[input-permission]');
+if (inputPermissions) {
+    let ele = document.querySelector('input[name="permission"]');
+    let permission = '';
+    inputPermissions.forEach(item => {
+        item.onchange = (e) => {
+            if (e.target.checked == true) {
+                permission += e.target.value + ", ";
+            } else {
+                let str = e.target.value + ", ";
+                permission = permission.replace( str, "");
+            }
+            ele.value=permission
+        }
+    })
 }

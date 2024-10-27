@@ -1,3 +1,37 @@
 extends ../../layouts/default.pug
 
 block main
+    .card-body.products  
+        .row 
+            h3 Role list
+        .row
+            .col-4 
+            .col-6 
+            .col-2 
+                a.btn.btn-primary(href = '/admin/role/create' button-create-role) Create
+                
+        .row
+            table  
+                thead 
+                    tr 
+                        th STT
+                        th Title
+                        th Update
+                tbody
+                    each item, index in roles
+                        tr.product-record
+                            td #{index + 1}
+                            td
+                                p #{item.title}
+                            td
+                                .row.d-flex.justify-content-center.align-items-center
+                                    button.btn-action.btn.btn-primary(data-id=item._id button-edit) Edit
+                                .row.blank
+                                .row.d-flex.justify-content-center.align-items-center
+                                    button.btn-action.btn.btn-danger(data-id=item._id button-delete) Delete
+    form(
+        action = ''
+        method="POST"
+        form-delete-item 
+        data-path='/admin/role/delete/'
+    )

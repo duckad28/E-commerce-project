@@ -1,0 +1,22 @@
+extends ../../layouts/default.pug
+
+block main 
+    .card-body 
+        .row 
+        .row 
+            form(
+                action='/admin/role/create'
+                method='POST'
+                form-create-role
+            )
+                .form-group 
+                    label(for='title') Title 
+                    input(type='text' name='title')
+                .form-group 
+                    label(for='permission') Permission
+                    input(type='text' name='permission' value='[]' class='d-none')
+                    each item in nav
+                        .row 
+                            label(for=item) #{item}
+                            input(type='checkbox' value=item input-permission)
+                button.btn.btn-danger(type='submit') Create role
