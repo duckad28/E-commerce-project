@@ -6,7 +6,6 @@ module.exports.login = (req, res) => {
 
 module.exports.loginPost = async (req, res) => {
     try {
-        console.log(req.body)
         const account = await Account.findOne(req.body);
         if (account) {
             req.flash('success', 'Login success.');

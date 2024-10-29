@@ -1,0 +1,20 @@
+extends ../../layouts/default.pug
+include ../../mixins/tree.pug
+
+block main 
+    .card-body 
+        .row 
+        .row 
+            form(
+                action='/admin/category/create'
+                method='POST'
+                form-create-category
+            )
+                .form-group 
+                    label(for='title') Title 
+                    input(type='text' name='title')
+                .form-group 
+                    select(name='parent')
+                        option() Select parent 
+                        +select-tree(tree.root.children)
+                button.btn.btn-danger(type='submit') Create category
