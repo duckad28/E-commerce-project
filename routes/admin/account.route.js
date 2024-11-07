@@ -16,4 +16,6 @@ router.post('/create',upload.single('avatar'), cloudMiddleware.cloudUpload, acco
 
 router.delete('/delete/:id', accountController.delete);
 
+router.get('/edit/:id', accountController.edit);
+
 module.exports = router;

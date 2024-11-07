@@ -10,27 +10,36 @@ block main
                     option --- Select sort type ---
                     each item in sort.arr 
                         option(value=item[0] selected=item[0]==sort.select) #{item[1]}
+            .col-3
+                each stt in status.statuses 
+                    button.btn.btn-outline-success.mx-1(button-item-status data-status=stt class=stt==status.currentStatus ? 'active' : '') #{stt || 'all'}
+            .col-3
+                each stt in gender.genders 
+                    button.btn.btn-outline-primary.mx-1(button-item-gender data-gender=stt class=stt==gender.currentGender ? 'active' : '') #{stt || 'all'}
+            .col-2 
+                a.btn.btn-primary(href = '/admin/product/create' button-create-product) Create
+        .row.blank
         .row
             table  
                 thead 
                     tr 
                         th STT
                         th Image 
-                        each item in scheme 
-                            th #{item}
+                        each item in scheme.props 
+                            th #{item.name}
                         th Update
                 tbody
                     each item, index in product 
                         tr.product-record
                             td #{(pagination.currentPage - 1)*pagination.limit + index + 1}
                             td
-                                img(class='item-img' src=`/static/${item.imageLink}`)
-                            each prop in scheme 
+                                img(class='item-img' src=item[scheme.image])
+                            each pro in scheme.props 
                                 td
-                                    p #{item[prop]}
+                                    p #{item[pro.prop]}
                             td
                                 .row.d-flex.justify-content-center.align-items-center
-                                    button.btn-action.btn.btn-primary(data-id=item._id button-edit) Edit
+                                    a.btn-action.btn.btn-primary(data-id=item._id button-edit href=`/admin/product/edit/${item._id}`) Edit
                                 .row.blank
                                 .row.d-flex.justify-content-center.align-items-center
                                     button.btn-action.btn.btn-danger(data-id=item._id button-delete) Delete

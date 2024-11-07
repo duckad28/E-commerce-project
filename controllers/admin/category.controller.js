@@ -38,3 +38,31 @@ module.exports.delete = async (req, res) => {
         res.redirect('back');
     }
 }
+
+module.exports.edit = async (req, res) => {
+    try {
+    const id = req.params.id;
+    const cate = await Category.findOne({_id: id});
+    const scheme = ['title'];
+    const categories = await Category.find({});
+    const tree = createTreeCategory(categories);
+    res.render('admin/pages/category/edit', {title: 'category', category: cate, tree: tree});
+    } catch (e) {
+        req.flash('error', 
+            'Error'
+        )
+        res.redirect('back');
+    }
+}
+
+module.exports.editPatch = async (req, res) => {
+    try {
+        const id = req.params.id;
+        await Category.updateOne({_id: id}, {title: req.body.title});
+        req.flash('success', 'Success');
+    } catch (error) {
+        req.flash('error', 'Error');
+    } finally {
+        res.redirect('back');
+    }
+}

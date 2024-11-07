@@ -1,0 +1,46 @@
+extends ../../layouts/default.pug
+include ../../mixins/tree.pug
+
+block main 
+    .card-body 
+        .row 
+        .row 
+            form(
+                action=`/admin/product/edit/${product._id}?_method=PATCH`
+                method='POST'
+                form-create-product
+                enctype="multipart/form-data"
+            )
+                each item in scheme.props
+                    -var t='text'
+                    if item.type == 'Boolean'
+                    else
+                        if item.type == 'Number'
+                            -t='number'
+                        .form-group 
+                            label(for='title') #{item.name} 
+                            input.form-control(type=t  name=item.prop value=product[item.prop])
+                .form-group 
+                    select(name='category')
+                        option(value=product.category) #{product.category}
+                        +select-tree(tree.root.children)
+                .form-group 
+                    label(for='gender') Gender 
+                    .form-check
+                        input(type='radio' name='gender' value='MEN' id='men' checked=product.gender=='MEN')
+                        label(for='men') MEN
+                        
+                    .form-check
+                        input(type='radio' name='gender' value='WOMEN' id ='women' checked=product.gender=='WOMEN')
+                        label(for='women') WOMEN
+                    
+                    .form-check
+                        input(type='radio' name='gender' value='KIDS' id='kids' checked=product.gender=='KIDS')
+                        label(for='kids') KIDS
+                    .row 
+                        .col-2
+                            input(type='file' accept='image/*' name='imageURL')
+                        .row
+                            .col-4 
+                                img.image-upload-preview(src=product.imageURL)
+                button.btn.btn-danger(type='submit') Submit

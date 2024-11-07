@@ -22,3 +22,7 @@ module.exports.createPost = async (req, res) => {
         res.redirect('back')
     }
 }
+
+module.exports.edit = (req, res) => {
+    
+}

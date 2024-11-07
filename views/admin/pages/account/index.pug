@@ -30,7 +30,7 @@ block main
                                     p #{item[prop]}
                             td
                                 .row.d-flex.justify-content-center.align-items-center
-                                    button.btn-action.btn.btn-primary(data-id=item._id button-edit) Edit
+                                    a.btn-action.btn.btn-primary(data-id=item._id button-edit href=`/admin/account/edit/${item._id}`) Edit
                                 .row.blank
                                 .row.d-flex.justify-content-center.align-items-center
                                     button.btn-action.btn.btn-danger(data-id=item._id button-delete) Delete
