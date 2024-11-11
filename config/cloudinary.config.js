@@ -1,5 +1,4 @@
 const cloudinary = require('cloudinary').v2;
-const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const multer = require('multer');
 
 cloudinary.config({ 
@@ -8,16 +7,6 @@ cloudinary.config({
     api_secret: process.env.CLOUD_SECRET
 });
 
-const storage = new CloudinaryStorage({
-    cloudinary,
-    allowedFormats: ['jpg', 'png'],
-    filename: function (req, file, cb) {
-      cb(null, file.fieldName + Date.now() + '.jpg'); 
-    }
-});
-
-const uploadCloud = multer({ storage });
-
 const deleteItem = (img) => {
     cloudinary.uploader.destroy(img, function(error,result) {
         console.log('Error')
@@ -25,4 +14,3 @@ const deleteItem = (img) => {
 }
 
 module.exports = deleteItem;
-module.exports.upload = uploadCloud;

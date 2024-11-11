@@ -1,0 +1,16 @@
+extends ../../layouts/default.pug
+
+block main 
+    .container
+        .row 
+            .chat-container
+                .message-container 
+                    each item in chat 
+                        .msg.inner-comming 
+                            p #{item.content}
+                form(action="" form-send-message)
+                    input(type='text')
+                    button(type='submit') Send 
+    script(src="/socket.io/socket.io.js")
+    script(src="/static/client/js/socket.js") 
+    script(src="/static/client/js/chat.js")

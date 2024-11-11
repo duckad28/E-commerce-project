@@ -7,7 +7,8 @@ var cookieParser = require('cookie-parser');
 var session      = require('express-session');
 var flash        = require('express-flash');
 var methodOverride = require('method-override');
-
+const { Server } = require('socket.io');
+const http = require('http');
 // user define
 const database = require('./config/database');
 const clientRoute = require('./routes/client/index.route');
@@ -29,12 +30,21 @@ app.use(cookieParser('keyboard cat'));
 app.use(session({ cookie: { maxAge: 60000 }}));
 app.use(flash());
 app.use(methodOverride('_method'));
-app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')))
+app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
+
+// socket io
+const server = http.createServer(app);
+const io = new Server(server);
+global._io = io;
+app.get('/socket.io/socket.io.js', (req, res) => {
+  res.sendFile(__dirname + '/node_modules/socket.io/client-dist/socket.io.js');
+});
+// socketend
 
 // Run app
 clientRoute(app);
 adminRoute(app);
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`App is running on port ${PORT}`);
 })

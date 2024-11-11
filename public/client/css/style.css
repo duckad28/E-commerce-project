@@ -173,3 +173,52 @@ body {
     right: 0;
     z-index: 1;
 }
+
+.chat-container {
+    height: 600px;
+    width: 100%;
+    border: solid 1px black;
+    position: relative;
+}
+
+.message-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 80px;
+    border-bottom: solid 1px black;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.chat-container form {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-container form input {
+    width: 80%;
+}
+
+.msg {
+    padding: 10px;
+    width: fit-content;
+block-size: fit-content;
+}
+
+.msg p {
+    
+}
+
+.msg.inner-going {
+    
+    align-self: flex-end;
+}
