@@ -1,0 +1,41 @@
+extends ../../../layouts/default.pug
+
+block main
+    section.vh-100.d-flex.align-items-center
+        .container-fluid.h-custom
+            .row.d-flex.justify-content-center.align-items-center.h-100
+                .col-md-9.col-lg-6.col-xl-5
+                    img.img-fluid(src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp' alt='Sample image')
+                .col-md-8.col-lg-6.col-xl-4.offset-xl-1
+                    form(
+                        form-login-user 
+                        action='/auth/login'
+                        method='POST'
+                    )
+                        .d-flex.flex-row.align-items-center.justify-content-center.justify-content-lg-start
+                            p.lead.fw-normal.mb-0.me-3 Sign in with
+                            button.btn.btn-primary.btn-floating.mx-1(type='button' data-mdb-button-init='' data-mdb-ripple-init='')
+                                i.fab.fa-facebook-f
+                            button.btn.btn-primary.btn-floating.mx-1(type='button' data-mdb-button-init='' data-mdb-ripple-init='')
+                                i.fab.fa-twitter
+                            button.btn.btn-primary.btn-floating.mx-1(type='button' data-mdb-button-init='' data-mdb-ripple-init='')
+                                i.fab.fa-linkedin-in
+                        .divider.d-flex.align-items-center.my-4
+                            p.text-center.fw-bold.mx-3.mb-0 Or
+                        .form-outline.mb-4(data-mdb-input-init='')
+                            input.form-control.form-control-lg(type='email' placeholder='Enter a valid email address' name='email')
+                            label.form-label(for='email') Email address
+                        .form-outline.mb-3(data-mdb-input-init='')
+                            input.form-control.form-control-lg(type='password' placeholder='Enter password' name='password')
+                            label.form-label(for='password') Password
+                        .d-flex.justify-content-between.align-items-center
+                            .form-check.mb-0
+                                input#form2Example3.form-check-input.me-2(type='checkbox' value='')
+                                label.form-check-label(for='form2Example3')
+                                    | Remember me
+                            a.text-body(href='#!') Forgot password?
+                        .text-center.text-lg-start.mt-4.pt-2
+                            button.btn.btn-primary.btn-lg(type='submit' data-mdb-button-init='' data-mdb-ripple-init='' style='padding-left: 2.5rem; padding-right: 2.5rem;') Login
+                            p.small.fw-bold.mt-2.pt-1.mb-0
+                                | Don&apos;t have an account? 
+                                a.link-danger(href='/auth/register') Register

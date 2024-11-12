@@ -19,3 +19,6 @@ header.header
                     li
                         a(href="/chat" class=(title == 'Chat') ? "active" : "") Chat
                         .line
+                    li
+                        a(href="/auth/login" class=(title == 'login' || title=='register') ? "active" : "") Login/Register
+                        .line

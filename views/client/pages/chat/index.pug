@@ -2,15 +2,18 @@ extends ../../layouts/default.pug
 
 block main 
     .container
-        .row 
+        .row
+            h1 Chat
+        .row.d-flex.justify-content-center
             .chat-container
                 .message-container 
                     each item in chat 
-                        .msg.inner-comming 
-                            p #{item.content}
+                        .message.inner-comming 
+                            | #{item.content}
                 form(action="" form-send-message)
                     input(type='text')
-                    button(type='submit') Send 
+                    button.mx-2.btn.btn-primary(type='submit')
+                        i(class="fa-regular fa-paper-plane")
     script(src="/socket.io/socket.io.js")
     script(src="/static/client/js/socket.js") 
     script(src="/static/client/js/chat.js")

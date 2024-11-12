@@ -9,7 +9,7 @@ module.exports.index = async (req, res) => {
         socket.on('CLIENT_SEND_MESSAGE', async (msg) => {
           const newChat = new Chat({content: msg});
           await newChat.save();
-          _io.emit('SERVER_RETURN_MESSAGE', {content: msg});
+          _io.emit('SERVER_RETURN_MESSAGE', {user: socket.id, content: msg});
         });
 
         socket.on('disconnect', () => {
