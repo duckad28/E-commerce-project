@@ -1,0 +1,18 @@
+extends ../../../layouts/default.pug
+
+block main 
+    section(style='background-color: #eee;').d-flex.justify-content-center.align-items-center
+        .card.text-center(style='width: 300px;')
+            .card-header.h5.text-white.bg-primary Password Reset
+            .card-body.px-5
+            p.card-text.py-2
+                | Enter new password
+            form.form-outline(
+                action='/auth/password/reset'
+                method='POST'
+                form-reset-password
+            )
+                .form-group
+                    input.form-control.my-3(type='text' name='password')
+                    label.form-label(for='password') Enter new password
+                button.btn.btn-primary.w-100(type='submit' data-mdb-ripple-init='') Reset password

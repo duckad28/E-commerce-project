@@ -1,0 +1,21 @@
+extends ../../../layouts/default.pug
+
+block main 
+    section(style='background-color: #eee;').d-flex.justify-content-center.align-items-center
+        .card.text-center(style='width: 300px;')
+            .card-header.h5.text-white.bg-primary Password Reset
+            .card-body.px-5
+            p.card-text.py-2
+                | Enter otp.
+            form.form-outline(
+                action='/auth/password/otp'
+                method='POST'
+                form-confirm-otp
+            )
+                .form-group
+                    input.form-control.my-3(type='email' name='email' value=email)
+                    label.form-label(for='email') Email
+                .form-group
+                    input.form-control.my-3(type='text' name='otp')
+                    label.form-label(for='otp') Otp input
+                button.btn.btn-primary.w-100(type='submit' data-mdb-ripple-init='') Reset password

@@ -1,0 +1,17 @@
+extends ../../../layouts/default.pug
+
+block main 
+    section(style='background-color: #eee;').d-flex.justify-content-center.align-items-center
+        .card.text-center(style='width: 300px;')
+            .card-header.h5.text-white.bg-primary Password Reset
+            .card-body.px-5
+            p.card-text.py-2
+                | Enter your email address and we&apos;ll send you an email with instructions to reset your password.
+            form.form-outline(
+                action='/auth/password/forgot'
+                method='POST'
+                form-confirm-email
+            )
+                input.form-control.my-3(type='email' name='email')
+                label.form-label(for='email') Email input
+                button.btn.btn-primary.w-100(type='submit' data-mdb-ripple-init='') Reset password
