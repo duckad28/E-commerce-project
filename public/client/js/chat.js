@@ -1,4 +1,4 @@
-let id = '';
+let username = document.querySelector('[chat-user-name]').getAttribute('chat-user-name');
 socket.on('SERVER_SEND_SOCKET_ID', (data) => {
     id = data;
 })
@@ -24,12 +24,14 @@ socket.on('SERVER_RETURN_MESSAGE', (data) => {
     let ele = document.createElement('div');
     ele.classList.add('message');
     
-    if (data.user == id) {
+    if (data.user == username) {
         ele.classList.add('inner-going');
+        ele.innerText = data.content;
     } else {
         ele.classList.add('inner-coming');
+        ele.innerHTML = `${data.content} <p>${data.user}</p>`
     }
-    ele.innerText = data.content;
+    
     messageContainer.appendChild(ele);
     messageContainer.scrollTop = messageContainer.scrollHeight;
 })

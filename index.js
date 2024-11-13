@@ -5,6 +5,7 @@ var bodyParser = require('body-parser')
 const path = require('path');
 var cookieParser = require('cookie-parser');
 var session      = require('express-session');
+const passport = require('passport');
 var flash        = require('express-flash');
 var methodOverride = require('method-override');
 const { Server } = require('socket.io');
@@ -31,7 +32,19 @@ app.use(session({ cookie: { maxAge: 60000 }}));
 app.use(flash());
 app.use(methodOverride('_method'));
 app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
+// passport
+app.use(session({
+  secret : process.env.SESSION_SECRET,
+  saveUninitialized: true,
+  resave: false,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24
+  }
+}))
 
+app.use(passport.initialize());
+app.use(passport.session());
+//
 // socket io
 const server = http.createServer(app);
 const io = new Server(server);

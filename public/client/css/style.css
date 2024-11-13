@@ -213,6 +213,7 @@ body {
     width: 80%;
 }
 
+
 .message {
     padding: 10px 14px;
     width: fit-content;
@@ -220,12 +221,22 @@ body {
     background-color: #303030;
     color: white;
     border-radius: 10px;
-    margin-top: 10px;
     max-width: 60%;
     word-wrap: break-word;
+    margin-top: 30px;
+    position: relative;
 }
 
-.message.inner-going {
+.message p {
+    position: absolute;
+    top: -24px;
+    left: 0;
+    color: black;
+    font-size: 16px;
+}
+
+.inner-going {
+    margin-top: 10px;
     background-color: #1670ff;
     align-self: flex-end;
 }

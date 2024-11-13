@@ -23,44 +23,21 @@ module.exports.registerPost = (req, res) => {
                 await newUser.save();
                 console.log('register success');
                 req.flash('success', 'Register success');
+                req.login(newUser, (err) => {
+                    if (err) {
+                        console.log('Register err')
+                    } else {
+                        res.redirect('/');
+                    }
+                })
             }
         });
     } catch (error) {
         console.log('register failed');
         req.flash('error', 'Register failed.')
-    } finally {
-        res.redirect('/');
     }
 }
 
 module.exports.loginPost = async (req, res) => {
-    console.log(req.body);
-    try {
-
-        const user = await User.findOne({ email: req.body.email });
-        if (user) {
-            bcrypt.compare(req.body.password, user.password, function (err, result) {
-                // result == true
-                if (err) {
-                    console.log('compare err');
-                }
-                else {
-                    if (result) {
-                        res.locals.user = user;
-                    } else {
-                        console.log('wrong ')
-                    }
-                }
-
-            });
-        } else {
-            console.log('User doesnt exist')
-        }
-
-    } catch (error) {
-        console.log('login failed');
-        req.flash('error', 'Register failed.')
-    } finally {
-        res.redirect('/');
-    }
+    res.redirect('/');
 }

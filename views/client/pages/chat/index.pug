@@ -5,11 +5,16 @@ block main
         .row
             h1 Chat
         .row.d-flex.justify-content-center
-            .chat-container
+            .chat-container(chat-user-name=user.user_name)
                 .message-container 
-                    each item in chat 
-                        .message.inner-comming 
-                            | #{item.content}
+                    each item in chat
+                        if item.user == user.user_name 
+                            .message.inner-going 
+                                | #{item.content}
+                        else 
+                            .message.inner-comming 
+                                | #{item.content}
+                                p #{item.user}
                 form(action="" form-send-message)
                     input(type='text')
                     button.mx-2.btn.btn-primary(type='submit')
