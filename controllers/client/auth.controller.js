@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const Otp = require('../../models/Otp.model');
 const { model } = require('mongoose');
-
+const sendMailHelper = require('../../helpers/sendmail.js');
 module.exports.register = (req, res) => {
     res.render('client/pages/auth/register', { title: 'register' })
 }
@@ -67,8 +67,8 @@ module.exports.forgotPost = async (req, res) => {
                 otp: '1111',
                 expireAt: Date.now()
             })
-            console.log(otp)
             await otp.save();
+            sendMailHelper.sendMail(otp.email, 'OTP verify account', `OTP <br>${otp.otp}</br>will available in 3 min`)
             res.redirect('/auth/password/otp?email=' + req.body.email);
         } else {
             console.log('Email doesnt exist');
